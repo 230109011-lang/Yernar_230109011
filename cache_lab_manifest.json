@@ -1,0 +1,156 @@
+{
+  "git_username": "230109011-lang",
+  "instance_seed": 6141945932692927908,
+  "cpu_model": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "logical_cores": 16,
+  "cache_line_size": 64,
+  "affinity_supported": false,
+  "cpus_used": null,
+  "distinct_physical_cores": false,
+  "num_threads": 4,
+  "iterations_per_thread": 60000000,
+  "repeats_per_layout": 3,
+  "results": {
+    "A_contiguous": {
+      "stride_elements": 1,
+      "stride_bytes": 8,
+      "best_ns": 1417571000,
+      "all_ns": [
+        1728583600,
+        1417571000,
+        1700931000
+      ],
+      "ns_per_update_per_thread": 23.626183333333334,
+      "ns_per_update_aggregate": 5.906545833333333,
+      "voluntary_ctx_switches": 0,
+      "involuntary_ctx_switches": 0
+    },
+    "B_half_line": {
+      "stride_elements": 4,
+      "stride_bytes": 32,
+      "best_ns": 624243100,
+      "all_ns": [
+        809916300,
+        629046500,
+        624243100
+      ],
+      "ns_per_update_per_thread": 10.404051666666666,
+      "ns_per_update_aggregate": 2.6010129166666665,
+      "voluntary_ctx_switches": 0,
+      "involuntary_ctx_switches": 0
+    },
+    "C_line_padded": {
+      "stride_elements": 8,
+      "stride_bytes": 64,
+      "best_ns": 53409100,
+      "all_ns": [
+        53409100,
+        55854100,
+        55114300
+      ],
+      "ns_per_update_per_thread": 0.8901516666666667,
+      "ns_per_update_aggregate": 0.22253791666666667,
+      "voluntary_ctx_switches": 0,
+      "involuntary_ctx_switches": 0
+    },
+    "D_prefetch_safe": {
+      "stride_elements": 16,
+      "stride_bytes": 128,
+      "best_ns": 55671200,
+      "all_ns": [
+        55957400,
+        56246700,
+        55671200
+      ],
+      "ns_per_update_per_thread": 0.9278533333333333,
+      "ns_per_update_aggregate": 0.23196333333333333,
+      "voluntary_ctx_switches": 0,
+      "involuntary_ctx_switches": 0
+    },
+    "private_register": {
+      "stride_elements": 1,
+      "stride_bytes": 8,
+      "best_ns": 53676900,
+      "all_ns": [
+        53676900,
+        54084700,
+        55000100
+      ],
+      "ns_per_update_per_thread": 0.894615,
+      "ns_per_update_aggregate": 0.22365375,
+      "voluntary_ctx_switches": 0,
+      "involuntary_ctx_switches": 0
+    }
+  },
+  "slowdown_stride1_vs_stride8": 26.541750375872276,
+  "slowdown_stride4_vs_stride8": 11.687953925454652,
+  "ratio_stride16_vs_stride8": 1.042354205556731,
+  "ratio_stride8_vs_private": 0.9950108892279547,
+  "ratio_stride1_vs_private": 26.409330643163074,
+  "false_sharing_observed": true,
+  "audit": {
+    "expected_counter_per_thread": 60000000,
+    "final_counters": {
+      "A_contiguous": [
+        60000000,
+        60000000,
+        60000000,
+        60000000
+      ],
+      "B_half_line": [
+        60000000,
+        60000000,
+        60000000,
+        60000000
+      ],
+      "C_line_padded": [
+        60000000,
+        60000000,
+        60000000,
+        60000000
+      ],
+      "D_prefetch_safe": [
+        60000000,
+        60000000,
+        60000000,
+        60000000
+      ],
+      "private_register": [
+        60000000,
+        60000000,
+        60000000,
+        60000000
+      ]
+    },
+    "per_layout_exact": {
+      "A_contiguous": true,
+      "B_half_line": true,
+      "C_line_padded": true,
+      "D_prefetch_safe": true,
+      "private_register": true
+    },
+    "bit_exact_all_layouts": true,
+    "llvm_store_i64_count": 11,
+    "llvm_load_i64_count": 12,
+    "llvm_python_object_fallback": false,
+    "llvm_ok": true,
+    "llvm_snippet": [
+      "%.53 = load i64, ptr %.52, align 8",
+      "%.223.prol = load i64, ptr %sunkaddr2, align 8",
+      "store i64 %.224.prol, ptr %sunkaddr4, align 8",
+      "%.223 = load i64, ptr %sunkaddr6, align 8",
+      "store i64 %.224, ptr %sunkaddr8, align 8",
+      "%.223.1 = load i64, ptr %sunkaddr6, align 8",
+      "store i64 %.224.1, ptr %sunkaddr8, align 8",
+      "%.223.2 = load i64, ptr %sunkaddr6, align 8"
+    ]
+  },
+  "gil_demo": {
+    "threads_1_ns": 441595200,
+    "threads_4_ns": 1765597600,
+    "iters_per_thread": 3000000,
+    "slowdown_4_vs_1_threads": 3.9982264299974277
+  },
+  "verification_passed": true
+}
