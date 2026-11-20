@@ -1,0 +1,140 @@
+{
+  "github_username": "230109011-lang",
+  "gpu_uuid": "GPU-d9bb1440-68d8-b4e4-1bc2-eb242fb0a3e6",
+  "instance_seed": 14110376318561838015,
+  "host": {
+    "cpu_model": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+    "cpu_signature": "x86_64::Intel(R) Xeon(R) CPU @ 2.00GHz::2",
+    "cpu_count": 2,
+    "cpu_line_bytes": 64,
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39"
+  },
+  "mpi": {
+    "ranks": 4,
+    "cartesian_grid": [
+      2,
+      2
+    ],
+    "shared_window": {
+      "node_size": 4,
+      "node_rank": 0,
+      "alignment_offset_slots": 7,
+      "all_ranks_same_offset": true,
+      "view_64byte_aligned": true,
+      "slots": 64
+    }
+  },
+  "gpu": {
+    "global_grid": [
+      512,
+      512
+    ],
+    "local_padded_shape": [
+      258,
+      258
+    ],
+    "steps": 300,
+    "dx": 0.001949317738791423,
+    "kappa_max": 0.23999932238387464,
+    "dt_max": 3.958177474235875e-06,
+    "dt": 3.1665419793887e-06,
+    "lambda": 0.15,
+    "energy_trace": [
+      {
+        "step": 0,
+        "energy": 0.08155742716081757,
+        "l2_residual": 0.0
+      },
+      {
+        "step": 100,
+        "energy": 0.0815375397688872,
+        "l2_residual": 2.0892431401634992e-05
+      },
+      {
+        "step": 200,
+        "energy": 0.08152433089991457,
+        "l2_residual": 2.0285334924752547e-05
+      },
+      {
+        "step": 300,
+        "energy": 0.08151202786649488,
+        "l2_residual": 1.9718148690545973e-05
+      }
+    ],
+    "energy_strictly_decreasing": true,
+    "gpu_serialized_ms": 2447.7810668945312,
+    "gpu_overlapped_ms": 2776.15576171875,
+    "wall_serialized_ms": 2453.144096,
+    "wall_overlapped_ms": 2777.045775,
+    "parity_max_diff": 0.0,
+    "parity_passed": true,
+    "ptx_counts": {
+      "st.shared.f64": 5,
+      "ld.shared.f64": 5,
+      "bar.sync": 1,
+      "st.shared (any)": 5,
+      "ld.shared (any)": 5
+    },
+    "ptx_audit_passed": true
+  },
+  "shm": {
+    "iterations_per_rank": 40000000,
+    "repeats": 3,
+    "results": {
+      "stride_1": {
+        "stride_elements": 1,
+        "stride_bytes": 8,
+        "best_ms": 474.3497879999996,
+        "all_ms": [
+          474.3497879999996,
+          551.7719180000009,
+          482.10367699999955
+        ],
+        "ns_per_update": 11.85874469999999,
+        "exact_final_counters": true
+      },
+      "stride_8": {
+        "stride_elements": 8,
+        "stride_bytes": 64,
+        "best_ms": 237.02399799999972,
+        "all_ms": [
+          390.12899299999935,
+          237.02399799999972,
+          248.36657800000063
+        ],
+        "ns_per_update": 5.925599949999993,
+        "exact_final_counters": true
+      },
+      "stride_16": {
+        "stride_elements": 16,
+        "stride_bytes": 128,
+        "best_ms": 171.37248199999888,
+        "all_ms": [
+          231.5897600000003,
+          194.95682600000032,
+          171.37248199999888
+        ],
+        "ns_per_update": 4.284312049999972,
+        "exact_final_counters": true
+      }
+    },
+    "slowdown_stride1_vs_stride8": 2.001273255039771,
+    "ratio_stride16_vs_stride8": 0.723017430496633,
+    "false_sharing_observed": true,
+    "llvm_audit": {
+      "llvm_store_i64_count": 11,
+      "llvm_load_i64_count": 12,
+      "llvm_python_object_fallback": false,
+      "llvm_ok": true,
+      "llvm_snippet": [
+        "%.52 = load i64, ptr %.51, align 8",
+        "%.208.prol = load i64, ptr %sunkaddr1, align 8",
+        "store i64 %.209.prol, ptr %sunkaddr3, align 8",
+        "%.208 = load i64, ptr %sunkaddr5, align 8",
+        "store i64 %.209, ptr %sunkaddr7, align 8",
+        "%.208.1 = load i64, ptr %sunkaddr5, align 8"
+      ]
+    }
+  },
+  "verification_passed": true
+}
